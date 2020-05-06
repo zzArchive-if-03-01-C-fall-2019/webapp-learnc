@@ -8,22 +8,26 @@
   <body>
     <nav>
       <ul id="navigation">
-      <li><a href="../index.php">LearnC#</a></li>
+        <li><a href="../index.php">LearnC#</a></li>
         <li><a href="structure.php">Basic Structure</a></li>
-        <li><a href="output.php">Output</a></li>
         <li><a href="variables.php">Variable types</a></li>
-        <li><a href="input.php">Input from user</a></li>
-        <li><a href="junctions.php">Junctions</a></li>
-        <li><a class="active" href="arrays.php">Arrays</a></li>
+        <li class="dropdown">
+          <a class="dropbtn" href="#OI">OI</a>
+          <div class="dropdown-content">
+            <a href="output.php">Output</a>
+            <a href="input.php">Input from user</a>
+          </div>
+        </li>
+        <li><a href="selections.php">Selections</a></li>
+        <li class="active"><a href="arrays.php">Arrays</a></li>
         <li><a href="methods.php">Methods</a></li>
         <li><a href="structs.php">Structs</a></li>
         <li><a href="forum.php">Forum</a></li>
         <li><a href="login.php">Login</a></li>
       </ul>
     </nav>
-    <section>
+    <article>
       <h2 class="title">6. Arrays</h2>
-      <hr>
-    </section>
+    </article>
   </body>
 </html>
