@@ -1,6 +1,9 @@
 <?php
 require 'header.php'; 
 ?>
+
+  </head>
+<body>
     <nav>
       <ul id="navigation">
       <li><a href="../index.php">LearnC#</a></li>
@@ -17,15 +20,6 @@ require 'header.php';
       </ul>
     </nav>
         <main>
-            <pre class="border">
-
-
-            1
-            1
-            1
-            1
-            1
-            </pre>
             <?php
                 if(isset($_SESSION['userId'])){
                     echo '<p> You are logged in! </p>';

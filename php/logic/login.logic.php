@@ -35,6 +35,10 @@ if (isset($_POST['login-submit'])) {
                     exit();
                 }
             }
+            else{
+                header("Location: ../login.php?error=wronguid");
+                exit();
+            }
         }
     }
 }
