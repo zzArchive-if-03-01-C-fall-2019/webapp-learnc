@@ -179,7 +179,7 @@ namespace Introduction
 }
 </pre>
         <p>n1 isn´t bigger or smaller than n2, so it goes to else and prints "5 is equal 5".</p>
-        <p class="important">You can´t use "else if" or "else" in single. It must come after a "if".</p>
+        <p class="important">You can´t use "else if" or "else" in single. It must come after an "if".</p>
       </section>
 
       <section>
@@ -251,13 +251,84 @@ namespace Introduction
 
       <section>
         <h3>loops selection</h3>
-        <p>With loops you repeat the commands between the brackets over and over again, while the expression is true.
+        <p>With loops you can repeat curtain commands over and over again, so you don´t have to write these multiple times in your code. In this
+          way you can save space and make the code more readable.
         There are three forms:</p>
         <ul class="cs-bullets">
           <li>while</li>
           <li>do while</li>
           <li>for</li>
         </ul>
+        <h4>while</h4>
+        <p>Within a while-loop, the commands that are between the brackets will repeat as long as the expression is true.</p>
+        <p class="overview">In this example you can see that an int variable is declared and in the loop it is printed. After that comes the
+        command "<strong class="command">i++;</strong>". That´s only a shortcut for "<strong class="command">i = i + 1;</strong>". There is also
+        the shortcut "<strong class="command">i--;</strong>". i will be printed and increased until it´s greater than 10. After that the loop is
+        finished.</p>
+        <pre class="code">
+        namespace Introduction
+        {
+                class Program
+                {
+                        static void main()
+                        {
+                                int i = 1;
+                                while(i <= 10)
+                                {
+                                      Console.WriteLine("{0}", i);
+                                      i++;
+                                }
+                        }
+                }
+        }
+        </pre>
+        <h4>do while</h4>
+        <p>The do-while-loop is of the princip same as the while-loop. The only difference is that the while-loop first checks the expression
+        and then executes the commands. The do-while-loop executes the commands once and then checks the expression.</p>
+        <p class="overview">In the following example the code demands a number between 1 and 100 and as long the user doesn´t type a
+        number between 1 and 100 the programm won´t go further.</p>
+<pre class="code">
+namespace Introduction
+{
+        class Program
+        {
+                static void main()
+                {
+                        int number;
+
+                        do {
+                            Console.WriteLine("Give a number between 1 and 100: ");
+                            string input = Console.ReadLine();
+                            number = Convert.ToInt32(input);
+                        } while(number >= 1 &lt; number <= 100);
+
+                        .
+                        .
+                        .
+                }
+        }
+}</pre>
+        <h4>for</h4>
+        <p>A for-loop is basically a while with additional arguments.</p>
+        <p class="overview">As you can see we have this time three arguments in the loop-head. The first argument declares a variable and will called
+          only once and that is at the beginning, the second argument is the expression and the last argument is increasing the variable and will be
+          exucuted with every repetition, except for the first one. So with a for-loop you can save a lot of space.</p>
+<pre class="code">
+namespace Introduction
+{
+        class Program
+        {
+                static void main()
+                {
+                        for(int i = 1;i <= 10;i++)
+                        {
+                              Console.WriteLine("{0}", i);
+                        }
+                }
+        }
+}</pre>
+        <p class="important">The variable that you are declaring in the first argument is only in the loop useable. Outside of the loop
+        the variable is not existing.</p>
       </section>
     </article>
   </body>
