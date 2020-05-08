@@ -9,13 +9,13 @@ programmers a way to fresh up their memory and help new and aspiring programmers
 ## WEBAPP FEATURES
 We are currently working on implementing both a functioning forum as well
 as a login / registration page for users to ask / answer questions
-	
+
 The forum will be split up in seperate sections, including programming in general,
 any questions or issues related to computers, and, of course, a section for c# in particular.
-	
+
 Users will be able to recieve / give roles that determine what they can and can't do.
 Here is a table of the planned roles and their abilities.
-	
+
 | Role name | create new threads | can pin threads to the top of the list |	ban / mute other users | Can mark their responses to a thread as answers | mark a thread as closed
 |--|--|--|--|--|--|
 | Member | x |  |  |  |  |
@@ -30,15 +30,18 @@ None of the roles are earned, they will be manually given out by staff (administ
 
 Furthermore, we will implement a search function that filters threads by either their name, the name of the autor or both.
 
-To prevent constant repetition of questions both the helpers and moderators will work together to constantly maintain and update a questions megathread that will be pinned to the top of the section at all times. 
-There, the most asked / answered questions and their answers will be collected for easier access. 
+To prevent constant repetition of questions both the helpers and moderators will work together to constantly maintain and update a questions megathread that will be pinned to the top of the section at all times.
+There, the most asked / answered questions and their answers will be collected for easier access.
 ##
 
 TODO :
 
  - [ ] Finish login page and it's functions
- - [ ] Figure out how to implement a forum 
+ - [ ] Figure out how to implement a forum
  - [ ] Possible design overhaul (?)
  - [ ] Continue adding more content to the individual sites
 
-  
+
+=======
+WEBAPP FEATURES :
+We want to implement a forum at the bottom of every information site and not a single forum for everything, so people can ask more defiened questions about a topic. To use the forum the user must first login with his account or if he doesn´t have an acount he has to register. To register he must enter his username, password, e-mail-adress and confirm his password again.
