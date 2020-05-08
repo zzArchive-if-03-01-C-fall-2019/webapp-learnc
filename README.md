@@ -29,11 +29,3 @@ Furthermore, we will implement a search function that filters threads by either 
 
 To prevent constant repetition of questions both the helpers and moderators will work together to constantly maintain and update a questions megathread that will be pinned to the top of the section at all times.
 There, the most asked / answered questions and their answers will be collected for easier access.
-##
-
-TODO :
-
- - [ ] Finish login page and it's functions
- - [ ] Figure out how to implement a forum
- - [ ] Possible design overhaul (?)
- - [ ] Continue adding more content to the individual sites
