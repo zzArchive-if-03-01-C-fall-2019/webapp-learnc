@@ -18,7 +18,7 @@ Here is a table of the planned roles and their abilities.
 | Member | x |  |  |  |  |
 | Helper | x | x | | x | x |
 | Moderator | x | x | x |  | x |
-|Administrator | x | x | x | x | x |
+| Administrator | x | x | x | x | x |
 
 
 Helpers are those who are experienced (and competent) enough to help other users.
