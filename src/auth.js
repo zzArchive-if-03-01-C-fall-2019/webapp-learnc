@@ -5,7 +5,7 @@ const sha256 = require('js-sha256').sha256;
 
 const router = express();
 
-router.post("/views/login.ejs", function(req, res) {
+router.post("/views/login", function(req, res) {
 
   if(req.body.username === '' || req.body.password === '') {
     res.render("../views/login", { message: "Please fill out all fields" });
@@ -25,7 +25,6 @@ router.post("/views/login.ejs", function(req, res) {
     if(user) {
       if(hash(newUser.password, user.salt)[1] == user.password) {
         req.session.user = newUser;
-        console.log('i am in');
         res.render("../views/login", { message: "You are logged in" });
       } else {
         res.render("../views/login", { message: "Wrong Password" });
@@ -38,7 +37,7 @@ router.post("/views/login.ejs", function(req, res) {
 });
 
 
-router.post("/views/registration.ejs", function(req, res) {
+router.post("/views/registration", function(req, res) {
   let valid = true;
 
   if(req.body.username === '' || req.body.password === '' || req.body.email === ''
@@ -55,6 +54,7 @@ router.post("/views/registration.ejs", function(req, res) {
 
   if(valid) {
     const newUser = {
+      "id": 0,
       "user": req.body.username,
       "password": req.body.password,
       "email": req.body.email
@@ -69,6 +69,7 @@ router.post("/views/registration.ejs", function(req, res) {
     if(exists) {
       res.render("../views/registration", { message: "This user already exists " });
     } else {
+      newUser.id = jsonObj.users.length + 1;
       var pAnds = hash(newUser.password);
 
       newUser.password = pAnds[1];
@@ -79,7 +80,7 @@ router.post("/views/registration.ejs", function(req, res) {
       fs.writeFile('db.json', JSON.stringify(jsonObj), function() {
         console.log('You are registerd in with user', newUser.user);
       });
-      res.redirect('../views/login.ejs');
+      res.redirect('../views/login');
     }
   }
   res.send();
@@ -88,7 +89,6 @@ router.post("/views/registration.ejs", function(req, res) {
 module.exports = router;
 
 function hash(password, salt = new Date().getTime()) {
-  //console.log(salt);
   let hash = sha256.create();
   hash.salt = salt;
   hash.update(password);

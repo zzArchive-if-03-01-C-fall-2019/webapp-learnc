@@ -57,6 +57,7 @@ th {
 .cs-bullets {
   list-style-image: url('../images/csharp.png');
 }
+
 /************** navigation bar ******************/
 #navigation {
   list-style-type: none;
@@ -172,3 +173,44 @@ p strong {
   border-collapse: separate;
   padding: 15px;
 }
+
+/************** comment-section********************/
+.comment-section {
+  margin-left: 1%;
+  margin-right: 1%;
+  margin-top: 100px;
+
+  border-top: 1px solid white;
+}
+.comment-section .message {
+  color: green;
+  font-size: 20pt;
+}
+.comment-section form {
+  padding: 30px;
+}
+.comment-section form .text{
+  height: 100px;
+  width: 800px;
+  font-size: 12pt;
+  border: 1px solid white;
+}
+
+.comment-section form button {
+  float: right;
+  padding: 15pt;
+
+  padding-left: 40px;
+  padding-right: 40px;
+  margin-right: 220px;
+  background-color: white;
+  color: green;
+  font-size: 15pt;
+
+  border: none;
+}
+.comment-section form button:hover {
+  background-color: green;
+  color: white;
+}
+/***********************************************************/

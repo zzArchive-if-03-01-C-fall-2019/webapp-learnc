@@ -11,6 +11,7 @@ server.set("view engine", "ejs");
 
 const index = require('./src/index');
 const auth = require('./src/auth');
+const forum = require('./src/forum');
 
 server.use(middleware);
 server.use(jsonServer.bodyParser);
@@ -21,6 +22,7 @@ server.use(session({secret: "secret", resave: false, saveUninitialized: true}));
 
 server.use(index);
 server.use(auth);
+server.use(forum);
 
 server.use(router);
 server.listen(server.get('port'), function() {
