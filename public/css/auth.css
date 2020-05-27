@@ -1,0 +1,90 @@
+.interface {
+  border: black 1px solid;
+  background-color: black;
+  margin-left: 35%;
+  margin-right: 35%;
+  margin-top: 60px;
+  padding-bottom: 30px;
+  box-shadow: 20px -15px green;
+}
+
+.interface .interface_title {
+  color: white;
+  font-size: 40pt;
+  text-align: center;
+  border-bottom: #BDBDBD 1px solid;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.interface .message {
+ color: white;
+ background: #0B610B;
+ margin-left: 10%;
+ margin-right: 10%;
+}
+
+.interface form {
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 30px;
+  padding-top: 0;
+
+  display: block;
+  text-align: center;
+
+  border-collapse: collapse;
+}
+
+.interface form input {
+  width: 220px;
+  height: 35px;
+  font-size: 15pt;
+  margin-bottom: 20px;
+
+  background-color: black;
+  color: white;
+
+  border: none;
+  border-bottom: solid 1px white;
+}
+.interface form button {
+  width: 200px;
+  height: 30px;
+
+  font-size: 20px;
+  background-color: green;
+  color: white;
+
+  border: none;
+  border-color: green;
+  border-radius: 20px;
+
+  -webkit-transition: all 0.8s;
+  transition: all 0.8s;
+}
+.interface form button:hover {
+  background-color: white;
+  color: green;
+}
+
+.interface a {
+  padding-left: 10%;
+  color: green;
+  text-decoration: none;
+}
+.interface a:hover {
+  color: white;
+}
+
+.interface .logout {
+  float: right;
+  border: none;
+  background-color: black;
+  color: green;
+  padding-right: 10%;
+}
+
+.interface .logout:hover {
+  color: white;
+}

@@ -1,0 +1,36 @@
+{
+  "name": "webapp-learnc",
+  "version": "1.0.0",
+  "description": "This website aims to provide a free and easy to use database for users\r that want to get into programming, while also giving more experienced\r programmers a way to fresh up their memory and help new and aspiring programmers.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src -d lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/if-03-01-C-fall-2019/webapp-learnc.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/if-03-01-C-fall-2019/webapp-learnc/issues"
+  },
+  "homepage": "https://github.com/if-03-01-C-fall-2019/webapp-learnc#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "^3.1.3",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "fs": "0.0.1-security",
+    "http": "0.0.1-security",
+    "js-sha256": "^0.9.0",
+    "json": "^9.0.6",
+    "json-server": "^0.16.1",
+    "path": "^0.12.7"
+  }
+}
