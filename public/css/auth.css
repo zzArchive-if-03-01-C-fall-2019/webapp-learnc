@@ -53,19 +53,19 @@
   height: 30px;
 
   font-size: 20px;
-  background-color: green;
+  background-image: linear-gradient(to right, darkgreen, Lime);
   color: white;
 
   border: none;
   border-color: green;
   border-radius: 20px;
 
-  -webkit-transition: all 0.8s;
-  transition: all 0.8s;
+  -webkit-transition: 1s;
+  transition: 1s;
 }
 .interface form button:hover {
-  background-color: white;
-  color: green;
+  background-image: linear-gradient(to left, darkgreen, Lime);
+  color: white;
 }
 
 .interface a {

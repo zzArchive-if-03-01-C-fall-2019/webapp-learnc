@@ -10,15 +10,15 @@ router.post("/views/login", function(req, res) {
   if(req.body.username === '' || req.body.password === '') {
     res.render("../views/login", { message: "Please fill out all fields" });
   } else {
-    const newUser = {
+    let newUser = {
       "user": req.body.username,
       "password": req.body.password,
     }
 
-    var data = fs.readFileSync('db.json');
-    var jsonObj = JSON.parse(data);
+    let data = fs.readFileSync('db.json');
+    let jsonObj = JSON.parse(data);
 
-    var user = jsonObj.users.find(user => {
+    let user = jsonObj.users.find(user => {
       return user.user === newUser.user;
     });
 
@@ -53,24 +53,24 @@ router.post("/views/registration", function(req, res) {
   }
 
   if(valid) {
-    const newUser = {
+    let newUser = {
       "id": 0,
       "user": req.body.username,
       "password": req.body.password,
       "email": req.body.email
     }
 
-    var data = fs.readFileSync('db.json');
-    var jsonObj = JSON.parse(data);
+    let data = fs.readFileSync('db.json');
+    let jsonObj = JSON.parse(data);
 
-    var exists = jsonObj.users.some(user => {
+    let exists = jsonObj.users.some(user => {
       return user.user === newUser.user;
     });
     if(exists) {
       res.render("../views/registration", { message: "This user already exists " });
     } else {
       newUser.id = jsonObj.users.length + 1;
-      var pAnds = hash(newUser.password);
+      let pAnds = hash(newUser.password);
 
       newUser.password = pAnds[1];
       newUser.salt = pAnds[0];
