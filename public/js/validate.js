@@ -5,37 +5,36 @@ function validate_login() {
 
   console.log('In Process');
 
-  if(username.value && password.value) {
-    message.innerHTML = '';
-    document.getElementsByTagName('form').submit();
+  if(username.username.value && password.password.value) {
+    message.innerText = '';
+    document.getElementById('interface_form').submit()
   } else {
-    message.innerText = 'Fill out all fields';
-    //return 'Fill out all fields';
+    message.innerText = 'Please fill out all fields';
   }
 }
 
 function validate_registration() {
-  let username = documents.getElementsByName('username');
-  let password = documents.getElementsByName('password');
-  let email = documents.getElementsByName('email');
-  let passwordcon = documents.getElementsByName('passwordcon');
+  let username = document.getElementsByName('username');
+  let password = document.getElementsByName('password');
+  let email = document.getElementsByName('email');
+  let passwordcon = document.getElementsByName('passwordcon');
 
-  let message = documents.getElementsByClassName('message');
+  let message = document.querySelector('.message');
 
   if(username === '' || password === '' || email === '' || passwordcon === '') {
 
-    message.innerHTML = "Please fill out all fields";
+    message.innerText = "Please fill out all fields";
 
   } else if(username.length < 5 || password.length < 5) {
 
-      message.innerHTML = "The username and the password should be longer than 5 characters";
+      message.innerText = "The username and the password should be longer than 5 characters";
 
   } else if(password !== passwordcon) {
 
-    message.innerHTML = "The password was not right confirmed";
+    message.innerText = "The password was not right confirmed";
 
   } else {
-    message.innerHTML = "";
-    documents.getElementsByTagName('form').submit();
+    message.innerText = "";
+    document.getElementById('interface_form').submit();
   }
 }

@@ -5,6 +5,7 @@
     <title>Learn# - Registration</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/auth.css">
+    <script type="text/javascript" src="../js/validate.js"></script>
   </head>
   <body>
     <nav>
@@ -31,7 +32,7 @@
       <div class="interface">
         <p class="interface_title">Register</p>
         <p class="message"><%= message%></p>
-        <form action="/views/registration" method="post">
+        <form id="interface_form" action="/views/registration" method="post">
           <input type="username" name="username" placeholder="Username">
           <br>
           <input type="password" name="password" placeholder="Password">
@@ -40,7 +41,7 @@
           <br>
           <input type="password" name="passwordcon" placeholder="Confirm Password">
           <br>
-          <button type="button" name="button">Login</button>
+          <button onclick="validate_registration()" type="button" name="button">Login</button>
         </form>
         <a href="login">Login</a>
       </div>
