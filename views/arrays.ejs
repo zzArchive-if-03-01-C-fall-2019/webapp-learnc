@@ -27,6 +27,98 @@
     </nav>
     <article>
       <h2 class="title">6. Arrays</h2>
+      <section>
+        <p>An array is a contiguous block of variables same type. The pro of an array is that you don´t need to create
+          many variables. If the variables are from the same type, you can put them in one of these blocks. You can create
+          an array of every datatype.</p>
+      </section>
+      <section>
+          <h3>Create an array</h3>
+          <strong class="command">int[] array = new int[size];</strong>
+          <p>At the beginning is the datatype, than the square brackets, They inform the program, that this will be an array.
+            Then the variablename comes and after that comes „= new int[]“. In the brackets at the end, you must declare a number.
+            That will be the number of variables that the array can contain.</p>
+      </section>
+      <section>
+        <h3>Access to an array</h3>
+        <p >You can access the array with the indexer. This are the square brackets. Before the brackets must be the arrayname.
+          Between the brackets must be the position.</p>
+          <p class="overview">Important to say is that arrays are zero-oriented, that means that the positions beginn with zero.
+            If you want to declare the first position, you must do it with 0.  If you want to declare the 5 position, you must do
+             it with 4 and for the tenth position, it´s 9. If you want to copy the data at a position to a variable, it´s the same
+             process. All the positions that weren´t declared contain the number 0, however that´s only for numeric-arrays so.</p>
+<pre class="code">
+namespace Introduction
+{
+        class Program
+        {
+                static void main()
+                {
+                        int[] array = new int[10];
+                        array[0] = 4;
+                        array[4] = 9;
+                        array[9] = 85;
+                        int number = array[4];
+                }
+        }
+}
+</pre>
+        <p class="important">You can´t get access to the array with a number that is greater than the size of the array or with a number
+        that is smaller than zero. Otherwise you will get an error.</p>
+      </section>
+      <section>
+        <h3>Use of loops for arrays</h3>
+        <p>You can use loops perfect for arrays. In this example we use the for-loop.</p>
+        <p class="overview">We create a int-array with the size of 5. In the first loop is a command that may be unknown and that is
+          „array.Length“. That is the size, that you have declared at the creation of the array, in this case 5. The statement declares
+          also that the loop should go on until i is bigger than the size. The first loop fills the array with numbers beginning by 1. The
+          second loop prints than 1, 2, 3, 4, 5.</p>
+<pre class="code">
+namespace Introduction
+{
+        class Program
+        {
+                static void main()
+                {
+                        int[] array = new int[5];
+
+                        for(int i = 0; i < array.Length; i++) {
+                        	array[0] = i + 1;
+                        }
+
+                        for(int i = 0; i < array.Length; i++) {
+                        	Console.WriteLine("{0}", array[i]);
+                        }
+                }
+        }
+}
+</pre>
+      </section>
+      <section>
+        <h3>Array of strings</h3>
+        <p>You can create an string-array with following command:</p>
+        <strong class="command">string[] array = new string[size];</strong>
+        <p>You can fill up the string-array with names, if you want. Positions that aren´t declared have automacilly </p>
+<pre class="code">
+namespace Introduction
+{
+        class Program
+        {
+                static void main()
+                {
+                        string[] array = new string[3];
+
+                        array[0] = "Steffen";
+                        array[1] = "Jack";
+
+                        for(int i = 0; i < array.Length; i++) {
+                          Console.WriteLine("{0}", array[i]);
+                        }
+                }
+        }
+}
+</pre>
+      </section>
     </article>
   </body>
 </html>
