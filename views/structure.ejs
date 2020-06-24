@@ -60,19 +60,16 @@ namespace Introduction
 
         <% let comments = array%>
         <%for(let i = 0;i < array.length;i++) {%>
-          <%if(1) {%>
-            <form class="comment" action="/views/structure" method="post">
-              <div class="comment_header">
-                <%if(array[i].info.user == user) {%>
-                  <button class="comment_delete" value="<%= i %>" type="submit" name="delete_button">DELETE</button>
-                <% } %>
-                <p class="comment_user"><%= array[i].info.user%></p>
-                <p class="comment_date">| <%= array[i].info.date %></p>
-              </div>
-              <p class="comment_text"><%= array[i].text %></p>
-            </form>
-
-          <% } %>
+          <form class="comment" action="/views/structure" method="post">
+            <div class="comment_header">
+              <%if(array[i].info.user === user) {%>
+                <button class="comment_delete" value="<%= i %>" type="submit" name="delete_button">DELETE</button>
+              <% } %>
+              <p class="comment_user"><%= array[i].info.user%></p>
+              <p class="comment_date">| <%= array[i].info.date %></p>
+            </div>
+            <p class="comment_text"><%= array[i].text %></p>
+          </form>
         <%}%>
       </section>
     </article>

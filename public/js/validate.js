@@ -50,7 +50,3 @@ function validate_comment_input() {
     document.getElementById('comment_form').submit();
   }
 }
-
-function delete_comment(index, pos) {
-  console.log(index+"  "+pos);
-}
