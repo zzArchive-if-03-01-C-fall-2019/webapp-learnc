@@ -1,4 +1,5 @@
 const express = require('express');
+const fs = require('fs');
 
 const router = express();
 
@@ -7,7 +8,11 @@ router.get("/", function(req, res) {
 });
 
 router.get("/views/structure", function(req, res) {
-  res.render("../views/structure", {message: ''});
+  let data = fs.readFileSync('comments.json');
+  let jsonObj = JSON.parse(data);
+
+  res.render("../views/structure", {message: '', pattern: '',
+  array: jsonObj.comments[0], user: req.session.user});
 });
 
 router.get("/views/variables", function(req, res) {

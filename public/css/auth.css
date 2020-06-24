@@ -24,7 +24,7 @@
  margin-right: 10%;
 }
 
-.interface form {
+#interface_form {
   padding-left: 30px;
   padding-right: 30px;
   padding-bottom: 30px;
@@ -36,7 +36,7 @@
   border-collapse: collapse;
 }
 
-.interface form input {
+#interface_form input {
   width: 220px;
   height: 35px;
   font-size: 15pt;
@@ -48,7 +48,7 @@
   border: none;
   border-bottom: solid 1px white;
 }
-.interface form button {
+#interface_form button {
   width: 200px;
   height: 30px;
 
@@ -63,7 +63,7 @@
   -webkit-transition: 1s;
   transition: 1s;
 }
-.interface form button:hover {
+#interface_form button:hover {
   background-image: linear-gradient(to left, darkgreen, Lime);
   color: white;
 }

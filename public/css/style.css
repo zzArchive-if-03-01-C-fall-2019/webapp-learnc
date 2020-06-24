@@ -186,31 +186,110 @@ p strong {
   color: green;
   font-size: 20pt;
 }
-.comment-section form {
+.comment-section #comment_form, .comment-section #search_form{
   padding: 30px;
+  margin-bottom: 50px
 }
-.comment-section form .text{
+.comment-section #comment_form .text{
   height: 100px;
   width: 800px;
   font-size: 12pt;
   border: 1px solid white;
-}
 
-.comment-section form button {
-  float: right;
+  float: left;
+}
+.comment-section #comment_form button {
   padding: 15pt;
 
   padding-left: 40px;
   padding-right: 40px;
-  margin-right: 220px;
+  margin-left: 20px;
   background-color: white;
   color: green;
   font-size: 15pt;
 
   border: none;
 }
-.comment-section form button:hover {
+.comment-section #comment_form button:hover {
   background-color: green;
+  color: white;
+}
+.comment-section .message {
+ color: white;
+ font-size: 15pt;
+ background: #0B610B;
+ margin-left: 5%;
+ margin-right: 5%;
+}
+
+.comment-section #search_form {
+  float: right;
+  margin-right: 100px;
+  text-align: center;
+}
+.comment-section #search_form .searchtext {
+  height: 50px;
+  width: 250px;
+}
+.comment-section #search_form button {
+  text-align: center;
+  border: none;
+  background-color: white;
+  color: green;
+  margin-top: 5px;
+  height: 25px;
+  width: 55px;
+}
+.comment-section #search_form button:hover {
+  background-color: green;
+  color: white;
+}
+
+.comment {
+  margin-bottom: 30px;
+
+  margin-right: 40%;
+  margin-left: 20px;
+}
+.comment_header {
+  background-color: lightgreen;
+  padding-top: 2px;
+  padding-bottom: 8px;
+
+  margin: 0%;
+}
+.comment_user {
+  color: black;
+  font-size: 10pt;
+  margin: 0%;
+  float: left;
+}
+.comment_date {
+  color: black;
+  font-size: 8pt;
+  margin: 0%;
+}
+.comment_text {
+  font-size: 15pt;
+  background-color: lightgrey;
+  color: black;
+  margin: 0%;
+  display: block;
+  padding-top: 5px;
+  padding-bottom: 15px;
+  word-wrap: break-word;
+}
+
+.comment_delete {
+  background-color: lightgreen;
+  padding: 0%;
+  font-size: 7pt;
+  float: right;
+  border: none;
+  margin: 0%;
+  margin-right: 2px;
+}
+.comment_delete:hover {
   color: white;
 }
 /***********************************************************/

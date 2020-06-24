@@ -21,15 +21,16 @@ function validate_registration() {
 
   let message = document.querySelector('.message');
 
-  if(username === '' || password === '' || email === '' || passwordcon === '') {
+  if(username.username.value === '' || password.password.value === ''
+  || email.email.value === '' || passwordcon.passwordcon.value === '') {
 
     message.innerText = "Please fill out all fields";
 
-  } else if(username.length < 5 || password.length < 5) {
+  } else if(username.username.length < 5 || password.password.length < 5) {
 
       message.innerText = "The username and the password should be longer than 5 characters";
 
-  } else if(password !== passwordcon) {
+  } else if(password.password.value !== passwordcon.passwordcon.value) {
 
     message.innerText = "The password was not right confirmed";
 
@@ -37,4 +38,19 @@ function validate_registration() {
     message.innerText = "";
     document.getElementById('interface_form').submit();
   }
+}
+
+function validate_comment_input() {
+  let text = document.getElementsByName('text');
+  let message = document.querySelector('.message');
+
+  if(text.text.value === '') {
+    message.innerText = 'Please write a comment';
+  } else {
+    document.getElementById('comment_form').submit();
+  }
+}
+
+function delete_comment(index, pos) {
+  console.log(index+"  "+pos);
 }

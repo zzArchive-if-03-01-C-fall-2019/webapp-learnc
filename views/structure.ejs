@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>LearnC# - Basic Structure</title>
     <link rel="stylesheet" href="../css/style.css">
+    <script type="text/javascript" src="../js/validate.js"></script>
   </head>
   <body>
     <nav>
@@ -43,13 +44,37 @@ namespace Introduction
 }</pre>
         <p>In the beginning you write all commands between the brackets of the "<strong class="command">static void Main()</strong>"-method.</p>
       </section>
-      <div class="comment-section">
+      <section class="comment-section" >
         <p class="message"><%= message%></p>
-          <form action="/views/structure" method="post">
-              <textarea class="text" name="text" placeholder="Type in your comment"></textarea>
-              <button type="submit" name="button">Submit</button>
-          </form>
-      </div>
+
+        <form id="search_form" action="/views/structure" method="post">
+          <textarea class="searchtext" name="searchtext" placeholder="Type in for what you wanna search"><%= pattern%></textarea>
+          <br>
+          <button type="submit" name="button">Search</button>
+        </form>
+
+        <form id="comment_form" action="/views/structure" method="post">
+            <textarea class="text" name="text" placeholder="Type in your comment"></textarea>
+            <button onclick="validate_comment_input()" type="button" name="button">Submit</button>
+        </form>
+
+        <% let comments = array%>
+        <%for(let i = 0;i < array.length;i++) {%>
+          <%if(1) {%>
+            <form class="comment" action="/views/structure" method="post">
+              <div class="comment_header">
+                <%if(array[i].info.user == user) {%>
+                  <button class="comment_delete" value="<%= i %>" type="submit" name="delete_button">DELETE</button>
+                <% } %>
+                <p class="comment_user"><%= array[i].info.user%></p>
+                <p class="comment_date">| <%= array[i].info.date %></p>
+              </div>
+              <p class="comment_text"><%= array[i].text %></p>
+            </form>
+
+          <% } %>
+        <%}%>
+      </section>
     </article>
   </body>
 </html>

@@ -6,27 +6,42 @@ const sha256 = require('js-sha256').sha256;
 const router = express();
 
 router.post("/views/login", function(req, res) {
-  let newUser = {
-    "user": req.body.username,
-    "password": req.body.password,
-  }
+  console.log(req.session);
+  if(!req.session.user) {
+    let newUser = {
+      "user": req.body.username,
+      "password": req.body.password,
+    }
 
-  let data = fs.readFileSync('db.json');
-  let jsonObj = JSON.parse(data);
+    let data = fs.readFileSync('db.json');
+    let jsonObj = JSON.parse(data);
 
-  let user = jsonObj.users.find(user => {
-    return user.user === newUser.user;
-  });
+    let user = jsonObj.users.find(user => {
+      return user.user === newUser.user;
+    });
 
-  if(user) {
-    if(hash(newUser.password, user.salt)[1] == user.password) {
-      req.session.user = newUser;
-      res.render("../views/login", { message: "You are logged in" });
+    if(user) {
+      if(hash(newUser.password, user.salt)[1] == user.password) {
+        req.session.user = newUser.user;
+        res.render("../views/login", { message: "You are logged in" });
+      } else {
+        res.render("../views/login", { message: "Wrong Password" });
+      }
     } else {
-      res.render("../views/login", { message: "Wrong Password" });
+      res.render("../views/login", { message: "You are not registered" });
     }
   } else {
-    res.render("../views/login", { message: "You are not registered" });
+    res.render("../views/login", { message: "You are already logged in with one account" });
+  }
+});
+
+router.post("/views/logout", function(req, res) {
+  console.log(req.session);
+  if(!req.session.user) {
+    res.render("../views/login", { message: "You are not logged in" });
+  } else {
+    delete req.session.user;
+    res.render("../views/login", { message: "You are no more logged in" });
   }
 });
 
