@@ -26,7 +26,33 @@
       </ul>
     </nav>
     <article>
-      <h2 class="title">8. Structs</h2>
+      <section>
+        <h2 class="title">8. Structs</h2>
+        <p>Structs are a way of better storing and managing properties like names or adresses</p>
+        <p>Up until now, if we wanted to, for example, store multiple properties of a person, we had</p>
+        <p>to make multiple variables which we had no way of grouping together.</p>
+        <br>
+        <p>A newer and faster way for storing properties of abstract concepts like a person are structs</p>
+        <p class="overview">Here is an example on how you would define a person with a name, adress and ID</p>
+        <pre class="code">
+struct Person{
+  static string Name;
+  static string Adress;
+  static int ID;
+}
+        </pre>
+        <br>
+        <p class="overview">Structs can also contain functions</p>
+        <pre class="code">
+struct Person{
+  static string Name;
+  static string Adress;
+  static int ID {
+  return (int)Name * (int)Adress;
+  }
+}
+        </pre>
+      </section>
     </article>
   </body>
 </html>

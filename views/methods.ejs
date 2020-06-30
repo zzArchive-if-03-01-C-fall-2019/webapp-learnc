@@ -26,7 +26,53 @@
       </ul>
     </nav>
     <article>
-      <h2 class="title">7. Methods and their usages</h2>
+      <section>
+        <h2 class="title">7. Methods and their usages</h2>
+        <p>In a large program with a lot of features, we will eventually need to use the same code on multiple occasions.</p> <br>
+        <p class="overview">However, since copying code over and over is both boring and time-consuming, C#'s designers put together a solution. <br>
+        instead of copying, we write the code once in a function, which we later call. Example : </p>
+        <pre class="code">
+void printHW()
+  {
+    Console.WriteLine("Hello World");
+  }
+        </pre>
+        <p class="overview">Now, instead of writing <strong class="command">Console.Writeline(...)</strong>
+        we can simply call printHW like this : <strong class="command">printHw();</strong> <br>
+        It´s important that you end a command with this symbol ";". So the program knows that the command is here finished. <br>
+        Methods can also be used to assign values to variables using the return funtion. <br>
+        Function type and variable type need to match. <br>
+        You can also use external variables outside of the function by defining placeholders in the brackets</p>
+        <pre class="code">
+int add(int a, int b)
+{
+  return a + b;
+}
+
+void Main()
+{
+  int result = add(1, 2);
+}
+        </pre>
+        <br>
+        <p>All variables inside a functino are "isolated" from the outside, meaning you can't access them anywhere but inside the function.</p>
+        <br><br>
+        <p>Programmers have developed a certain naming conventions over the years.</p>
+        <ul class="cs-bullets">
+          <li>
+            First letter of Funtion name is always lowercase
+          </li>
+          <li>
+            Name usually consists of a verb and a noun
+          </li>
+          <li>
+            First letter of the noun is written in uppercase ( printText )
+          </li>
+          <li>
+            Name is usually a "command" never descriptive ( no printsText )
+          </li>
+        </ul>
+      </section>
     </article>
   </body>
 </html>
