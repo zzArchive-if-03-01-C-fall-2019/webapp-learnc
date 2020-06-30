@@ -53,19 +53,33 @@
   height: 30px;
 
   font-size: 20px;
-  background-image: linear-gradient(to right, darkgreen, Lime);
+  /*background-image: linear-gradient(to right, darkgreen, Lime);*/
+  background-color: green;
   color: white;
 
   border: none;
   border-color: green;
   border-radius: 20px;
 
-  -webkit-transition: 1s;
-  transition: 1s;
+  /*-webkit-transition: 1s;
+  transition: 1s;*/
 }
 #interface_form button:hover {
-  background-image: linear-gradient(to left, darkgreen, Lime);
-  color: white;
+  /*background-image: linear-gradient(to left, darkgreen, Lime);*/
+  background-color: white;
+  color: green;
+}
+#interface_form select {
+  border: none;
+  border-bottom: solid 1px white;
+
+  background-color: black;
+  color: darkgrey;
+
+  width: 220px;
+  height: 35px;
+  font-size: 15pt;
+  margin-bottom: 20px;
 }
 
 .interface a {

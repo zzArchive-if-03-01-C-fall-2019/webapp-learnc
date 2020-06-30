@@ -10,22 +10,39 @@ router.post("/views/structure", function(req, res) {
   if(req.body.searchtext !== undefined) {
     pattern = req.body.searchtext;
     jsonObj = search(0, pattern);
-    res.render("../views/structure", {message: '', pattern: pattern, array: jsonObj, user: user});
+    res.render("../views/structure", {message: '', pattern: pattern, comments: jsonObj, user: user});
   } else if(req.body.text !== undefined) {
+    jsonObj = add(0, req);
     if(user) {
-      jsonObj = add(0, req);
-      res.render("../views/structure", {message: '', pattern: pattern, array: jsonObj, user: user});
+      res.render("../views/structure", {message: '', pattern: pattern, comments: jsonObj, user: user});
     } else {
       res.render("../views/structure", {message: 'You are not logged in',
-       pattern: pattern, array: jsonObj, user: user});
+       pattern: pattern, comments: jsonObj, user: user});
     }
   } else if(req.body.delete_button !== undefined) {
     jsonObj = delete_comment(0, req.body.delete_button);
-    res.render("../views/structure", {message: '', pattern: pattern, array: jsonObj, user: user});
+    res.render("../views/structure", {message: '', pattern: pattern, comments: jsonObj, user: user});
+  } else if(req.body.pin_button !== undefined) {
+    jsonObj = pin_comment(0, req.body.pin_button);
+    res.render("../views/structure", {message: '', pattern: pattern, comments: jsonObj, user: user});
   }
 });
 
 module.exports = router;
+
+function pin_comment(index, count) {
+  let data = fs.readFileSync('comments.json');
+  let jsonObj = JSON.parse(data);
+  if(jsonObj.comments[index][count].info.isPinned) {
+    jsonObj.comments[index][count].info.isPinned = false;
+  } else {
+    jsonObj.comments[index][count].info.isPinned = true;
+  }
+  fs.writeFile('comments.json', JSON.stringify(jsonObj), function() {
+    console.log('comment pinned');
+  });
+  return jsonObj.comments[index];
+}
 
 function delete_comment(index, count) {
   let data = fs.readFileSync('comments.json');
@@ -54,19 +71,23 @@ function search(index, search) {
 function add(index, req) {
   let data = fs.readFileSync('comments.json');
   let jsonObj = JSON.parse(data);
-  let date = getDate();
-  let newComment = {
-    "text": req.body.text,
-    "info": {
-      "user": req.session.user,
-      "date": date
-    }
-  };
 
-  jsonObj.comments[index].unshift(newComment);
-  fs.writeFile('comments.json', JSON.stringify(jsonObj), function() {
-    console.log('comment posted');
-  });
+  if(req.session.user) {
+    let date = getDate();
+    let newComment = {
+      "text": req.body.text,
+      "info": {
+        "user": req.session.user.user,
+        "date": date,
+        "isPinned": false
+      }
+    };
+
+    jsonObj.comments[index].unshift(newComment);
+    fs.writeFile('comments.json', JSON.stringify(jsonObj), function() {
+      console.log('comment posted');
+    });
+  }
 
   return jsonObj.comments[index];
 }

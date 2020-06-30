@@ -10,9 +10,10 @@ router.get("/", function(req, res) {
 router.get("/views/structure", function(req, res) {
   let data = fs.readFileSync('comments.json');
   let jsonObj = JSON.parse(data);
+  res.status(200);
 
   res.render("../views/structure", {message: '', pattern: '',
-  array: jsonObj.comments[0], user: req.session.user});
+  comments: jsonObj.comments[0], user: req.session.user});
 });
 
 router.get("/views/variables", function(req, res) {
@@ -53,5 +54,8 @@ router.get("/views/registration", function(req, res) {
 
 router.get("/views/changelog", function(req, res) {
   res.render("../views/changelog");
+});
+router.get("/views/assign", function(req, res) {
+  res.render("../views/assign", {message: '', user: req.session.user});
 });
 module.exports = router;

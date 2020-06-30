@@ -2,11 +2,11 @@ const path = require('path');
 const fs = require('fs');
 const express = require('express');
 const sha256 = require('js-sha256').sha256;
+const roles = require('./roles');
 
 const router = express();
 
 router.post("/views/login", function(req, res) {
-  console.log(req.session);
   if(!req.session.user) {
     let newUser = {
       "user": req.body.username,
@@ -22,7 +22,7 @@ router.post("/views/login", function(req, res) {
 
     if(user) {
       if(hash(newUser.password, user.salt)[1] == user.password) {
-        req.session.user = newUser.user;
+        req.session.user = {"user": user.user, "role": user.role};
         res.render("../views/login", { message: "You are logged in" });
       } else {
         res.render("../views/login", { message: "Wrong Password" });
@@ -36,7 +36,6 @@ router.post("/views/login", function(req, res) {
 });
 
 router.post("/views/logout", function(req, res) {
-  console.log(req.session);
   if(!req.session.user) {
     res.render("../views/login", { message: "You are not logged in" });
   } else {
@@ -50,7 +49,8 @@ router.post("/views/registration", function(req, res) {
     "id": 0,
     "user": req.body.username,
     "password": req.body.password,
-    "email": req.body.email
+    "email": req.body.email,
+    "role": roles.Member
   }
 
   let data = fs.readFileSync('db.json');
@@ -75,6 +75,29 @@ router.post("/views/registration", function(req, res) {
     });
     res.redirect('../views/login');
   }
+});
+
+router.post("/views/assign", function(req, res) {
+  let data = fs.readFileSync('db.json');
+  let jsonObj = JSON.parse(data);
+  let found = false;
+  for (var i = 0; i < jsonObj.users.length; i++) {
+    if(jsonObj.users[i].user === req.body.username) {
+      jsonObj.users[i].role = req.body.select;
+      found = true;
+    }
+  }
+  let message;
+  if(found) {
+    fs.writeFile('db.json', JSON.stringify(jsonObj), function() {
+      console.log('Role assigned');
+    });
+    message = "The user "+req.body.username+" has now a "+req.body.select+" role"
+  } else {
+    message = "This user does not exist";
+  }
+  res.render("../views/assign", {message: message});
+
 });
 
 module.exports = router;

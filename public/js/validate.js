@@ -50,3 +50,14 @@ function validate_comment_input() {
     document.getElementById('comment_form').submit();
   }
 }
+
+function validate_assign() {
+  let username = document.getElementsByName('username');
+  let message = document.querySelector('.message');
+
+  if(username.username.value === '') {
+    message.innerText = 'Please write down an user';
+  } else {
+    document.getElementById('interface_form').submit();
+  }
+}
