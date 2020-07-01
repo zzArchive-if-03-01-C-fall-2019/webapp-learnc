@@ -10,7 +10,14 @@
   <body>
     <nav>
       <ul id="navigation">
-        <li><a href="../">LearnC#</a></li>
+        <li class="dropdown">
+          <a class="dropbtn" href="../">LearnC#</a>
+          <% if(user && user.role === 'Admin') { %>
+            <div class="dropdown-content">
+              <a href="assign">Assign</a>
+            </div>
+          <% } %>
+        </li>
         <li><a href="structure">Basic Structure</a></li>
         <li><a href="variables">Variable types</a></li>
         <li class="dropdown">
@@ -41,7 +48,7 @@
           <br>
           <input type="password" name="passwordcon" placeholder="Confirm Password">
           <br>
-          <button onclick="validate_registration()" type="button" name="button">Login</button>
+          <button onclick="validate_registration()" type="button" name="button">Register</button>
         </form>
         <a href="login">Login</a>
       </div>

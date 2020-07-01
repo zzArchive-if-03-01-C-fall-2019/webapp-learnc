@@ -26,9 +26,10 @@ function validate_registration() {
 
     message.innerText = "Please fill out all fields";
 
-  } else if(username.username.length < 5 || password.password.length < 5) {
+  } else if(username.username.value.length < 5 || username.username.value.length > 15
+    || password.password.value.length < 5 || password.password.value.length > 15) {
 
-      message.innerText = "The username and the password should be longer than 5 characters";
+      message.innerText = "The Username and the Username should be at least 5 and at last 15 characters long";
 
   } else if(password.password.value !== passwordcon.passwordcon.value) {
 
@@ -37,17 +38,6 @@ function validate_registration() {
   } else {
     message.innerText = "";
     document.getElementById('interface_form').submit();
-  }
-}
-
-function validate_comment_input() {
-  let text = document.getElementsByName('text');
-  let message = document.querySelector('.message');
-
-  if(text.text.value === '') {
-    message.innerText = 'Please write a comment';
-  } else {
-    document.getElementById('comment_form').submit();
   }
 }
 

@@ -8,7 +8,14 @@
   <body>
     <nav>
       <ul id="navigation">
-        <li><a href="../">LearnC#</a></li>
+        <li class="dropdown">
+          <a class="dropbtn" href="../">LearnC#</a>
+          <% if(user && user.role === 'Admin') { %>
+            <div class="dropdown-content">
+              <a href="assign">Assign</a>
+            </div>
+          <% } %>
+        </li>
         <li><a href="structure">Basic Structure</a></li>
         <li><a href="variables">Variable types</a></li>
         <li class="dropdown">
@@ -28,35 +35,32 @@
     <article>
       <section>
         <h2 class="title">7. Methods and their usages</h2>
-        <p>In a large program with a lot of features, we will eventually need to use the same code on multiple occasions.</p> <br>
-        <p class="overview">However, since copying code over and over is both boring and time-consuming, C#'s designers put together a solution. <br>
+        <p>In a large program with a lot of features, we will eventually need to use the same code on multiple occasions.</p>
+        <p class="overview">However, since copying code over and over is both boring and time-consuming, C#'s designers put together a solution.
         instead of copying, we write the code once in a function, which we later call. Example : </p>
-        <pre class="code">
-void printHW()
-  {
+<pre class="code">
+static void printHW()
+{
     Console.WriteLine("Hello World");
-  }
-        </pre>
+} </pre>
+
         <p class="overview">Now, instead of writing <strong class="command">Console.Writeline(...)</strong>
-        we can simply call printHW like this : <strong class="command">printHw();</strong> <br>
-        It´s important that you end a command with this symbol ";". So the program knows that the command is here finished. <br>
-        Methods can also be used to assign values to variables using the return funtion. <br>
-        Function type and variable type need to match. <br>
+        we can simply call printHW like this : <strong class="command">printHw();</strong>
+        It´s important that you end a command with this symbol ";". So the program knows that the command is here finished.
+        Methods can also be used to assign values to variables using the return funtion.
+        Function type and variable type need to match.
         You can also use external variables outside of the function by defining placeholders in the brackets</p>
-        <pre class="code">
-int add(int a, int b)
+<pre class="code">
+static int add(int a, int b)
 {
   return a + b;
 }
 
-void Main()
+static void Main()
 {
   int result = add(1, 2);
-}
-        </pre>
-        <br>
+}</pre>
         <p>All variables inside a functino are "isolated" from the outside, meaning you can't access them anywhere but inside the function.</p>
-        <br><br>
         <p>Programmers have developed a certain naming conventions over the years.</p>
         <ul class="cs-bullets">
           <li>
@@ -72,6 +76,54 @@ void Main()
             Name is usually a "command" never descriptive ( no printsText )
           </li>
         </ul>
+      </section>
+      <section class="comment-section" >
+        <p class="message"><%= message%></p>
+
+        <div id="search_form">
+          <textarea class="searchtext" name="search" placeholder="Type in for what you wanna search"><%= pattern%></textarea>
+          <br>
+          <button class="search_button" type="button" name="button">Search</button>
+        </div>
+
+        <div id="comment_form">
+            <textarea class="text" name="text" placeholder="Type in your comment"></textarea>
+            <button class="submit_button" type="button" name="button">Submit</button>
+        </div>
+        <% let switching = 1 %>
+        <%for(let i = 0;i < comments.length;i++) {%>
+          <% if((switching === 1 && comments[i].info.isPinned) || (switching === 0 && !comments[i].info.isPinned)) { %>
+              <form class="comment">
+                <div class="comment_header">
+                  <%if(user && (comments[i].info.user === user.user || user.role === 'Admin' || user.role === 'Moderator')) {%>
+                    <button class="comment_btn delete_button" value="<%= i %>" type="button" name="delete_button">DELETE</button>
+                  <% } %>
+
+                  <% if(user && (user.role === 'Admin' || user.role === 'Moderator' || user.role === 'Helper')) {%>
+                    <% let pin = 'PIN'%>
+                    <% if(comments[i].info.isPinned) {%>
+                      <% pin = 'DEPIN' %>
+                    <% } %>
+                    <button class="comment_btn pin_button" value="<%= i %>" type="button" name="pin_button"><%= pin %></button>
+                  <% } %>
+
+                  <p class="comment_user"><%= comments[i].info.user%></p>
+                  <p class="comment_date">| <%= comments[i].info.date %></p>
+                  <% if(comments[i].info.isPinned) {%>
+                    <p class="comment_pinned">pinned</p>
+                  <% } %>
+                  <p class="comment_whitespace">This is not readable</p>
+                </div>
+                <pre class="comment_text"><%= comments[i].text %></pre>
+              </form>
+          <%}%>
+          <% if(switching === 1 && i === comments.length-1) { %>
+            <% i = -1 %>
+            <% switching = 0 %>
+          <% } %>
+        <%}%>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+        <script type="text/javascript" src="../js/send-forum.js" ></script>
       </section>
     </article>
   </body>

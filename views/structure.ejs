@@ -54,24 +54,23 @@ namespace Introduction
       <section class="comment-section" >
         <p class="message"><%= message%></p>
 
-        <form id="search_form" action="/views/structure" method="post">
-          <textarea class="searchtext" name="searchtext" placeholder="Type in for what you wanna search"><%= pattern%></textarea>
+        <div id="search_form">
+          <textarea class="searchtext" name="search" placeholder="Type in for what you wanna search"><%= pattern%></textarea>
           <br>
-          <button type="submit" name="button">Search</button>
-        </form>
+          <button class="search_button" type="button" name="button">Search</button>
+        </div>
 
-        <form id="comment_form" action="/views/structure" method="post">
+        <div id="comment_form">
             <textarea class="text" name="text" placeholder="Type in your comment"></textarea>
-            <button onclick="validate_comment_input()" type="button" name="button">Submit</button>
-        </form>
+            <button class="submit_button" type="button" name="button">Submit</button>
+        </div>
         <% let switching = 1 %>
         <%for(let i = 0;i < comments.length;i++) {%>
           <% if((switching === 1 && comments[i].info.isPinned) || (switching === 0 && !comments[i].info.isPinned)) { %>
               <form class="comment">
                 <div class="comment_header">
                   <%if(user && (comments[i].info.user === user.user || user.role === 'Admin' || user.role === 'Moderator')) {%>
-                    <button class="comment_btn" value="<%= i %>" formaction="/views/structure"
-                      formmethod="post" type="submit" name="delete_button">DELETE</button>
+                    <button class="comment_btn delete_button" value="<%= i %>" type="button" name="delete_button">DELETE</button>
                   <% } %>
 
                   <% if(user && (user.role === 'Admin' || user.role === 'Moderator' || user.role === 'Helper')) {%>
@@ -79,8 +78,7 @@ namespace Introduction
                     <% if(comments[i].info.isPinned) {%>
                       <% pin = 'DEPIN' %>
                     <% } %>
-                    <button class="comment_btn" value="<%= i %>" formaction="/views/structure"
-                      formmethod="post" type="submit" name="pin_button"><%= pin %></button>
+                    <button class="comment_btn pin_button" value="<%= i %>" type="button" name="pin_button"><%= pin %></button>
                   <% } %>
 
                   <p class="comment_user"><%= comments[i].info.user%></p>
@@ -98,6 +96,8 @@ namespace Introduction
             <% switching = 0 %>
           <% } %>
         <%}%>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+        <script type="text/javascript" src="../js/send-forum.js" ></script>
       </section>
     </article>
   </body>

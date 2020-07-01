@@ -9,7 +9,14 @@
   <body>
     <nav>
       <ul id="navigation">
-        <li class="active"><a href="/">LearnC#</a></li>
+        <li class="dropdown">
+          <a class="dropbtn active" href="/">LearnC#</a>
+          <% if(user && user.role === 'Admin') { %>
+            <div class="dropdown-content">
+              <a href="views/assign">Assign</a>
+            </div>
+          <% } %>
+        </li>
         <li><a href="views/structure">Basic Structure</a></li>
         <li><a href="views/variables">Variable types</a></li>
         <li class="dropdown">

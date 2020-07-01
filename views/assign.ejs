@@ -31,7 +31,7 @@
     <article>
       <div class="interface">
         <p class="interface_title">Assign</p>
-        <p class="message"><%= message%></p>
+        <p class="message"><%= message1%></p>
         <form id="interface_form" action="/views/assign"  method="post">
           <input type="username" name="username" placeholder="Username">
           <br>
@@ -39,12 +39,21 @@
             <option value="Member">Member</option>
             <option value="Helper">Helper</option>
             <option value="Moderator">Moderator</option>
-            <option value="Admin">Admin</option>
           </select>
           <br>
           <button onclick="validate_assign()" type="button" name="button">Assign</button>
         </form>
       </div>
+
+      <div id="delete_form">
+        <p class="delete_message"><%= message2%></p>
+        <input class="user_to_delete" type="username" name="username" placeholder="Username">
+        <br>
+        <button class="delete_user_btn" type="button" name="button">Delete</button>
+      </div>
     </article>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script type="text/javascript" src="../js/send-assign.js" ></script>
   </body>
 </html>
