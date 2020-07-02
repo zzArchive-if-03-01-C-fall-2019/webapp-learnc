@@ -67,7 +67,7 @@ router.post("/views/registration", function(req, res) {
     return user.user === newUser.user;
   });
   if(exists) {
-    res.render("../views/registration", { message: "This user already exists " });
+    res.render("../views/registration", { message: "This user already exists ", user: req.session.user});
   } else {
     let pAnds = hash(newUser.password);
 
